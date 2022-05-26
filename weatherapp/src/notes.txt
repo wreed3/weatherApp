@@ -1,0 +1,6 @@
+detroit Latitude and Longitude
+
+Longitude: -83.045753
+DMS Lat: 42° 19' 53.1444'' N
+DMS Long: 83° 2' 44.7108'' W
+Latitude: 42.331429
