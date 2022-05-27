@@ -1,20 +1,30 @@
 import React, {useState, useEffect} from "react";
 
 export default function Card() {
+
+    // const Detroit = {
+    //     lati: 42.331429,
+    //     longa: -83.045753,
+    //     APIKEY: "be306616b6cad0ecd57ce6ffa4d8844a"
+    // }
+
+    // const searchParams = new URLSearchParams(Detroit);
+
+    // const subString = searchParams.toString();
+    
+    const lati = 42.331429;
+    const longa = -83.045753;
+    
+    const APIKEY = "be306616b6cad0ecd57ce6ffa4d8844a";
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lati}&lon=${longa}&appid=${APIKEY}`;
+    
     const [data, setData] = useState([]);
     
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Host': 'openweather43.p.rapidapi.com',
-            'X-RapidAPI-Key': 'e9adca3a6cmsh3c85d74805897ecp1dc463jsnfe84a8f09fbf'
-        }
-    };
     
-   
+    
     const  weatherData = async () => {
         try{
-            const res = await fetch('https://openweather43.p.rapidapi.com/forecast?appid=da0f9c8d90bde7e619c3ec47766a42f4&q=Detroit&cnt=5&units=imperial', options);
+            const res = await fetch(URL);
             const json = await res.json();
             setData(json.list);
             console.log(json.list)
@@ -35,21 +45,23 @@ export default function Card() {
 	return (
         <React.Fragment> 
             
+        {data.map((data)=>(
 
-        {data.map((data)=>{ 
-            
-            const dayOfWeekName = new Date(data.dt_txt).toLocaleString('default', {weekday: 'long'});
-            return (
-		<div className="card-container">
-			<div className="day-of-the-week">
-				<h4>{dayOfWeekName}</h4>
-			</div>
-			<div className="date">
+        <div className="card-container">
+            <div className="day-of-the-week">
+                <h4>{new Date(data.dt_txt).toLocaleString('default', {weekday: 'long'})}</h4>
+            </div>
+            <div className="date">
                 <h5>{data.dt_txt}</h5>
             </div>
             <div className="temp-img-container">
                 <div className="img-container">
-                    <img  className="img" alt= '' src={`http://openweathermap.org/img/wn/${data.weather.icon}.png`}></img>
+
+                    {data.weather.map((props)=> (
+
+                        <img  className="img" alt= '' src={`http://openweathermap.org/img/wn/${props.icon}.png`}></img>
+                    ))}
+        
                 </div>
             
                 <div className="temp">
@@ -59,8 +71,9 @@ export default function Card() {
             <div>
                 <h6>{data.weather.description}</h6>
             </div>
-		</div>
-        )})} 
+        </div>
+        )   
+        )}
         </React.Fragment>
 	);
 }
