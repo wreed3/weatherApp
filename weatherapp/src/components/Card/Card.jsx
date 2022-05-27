@@ -19,7 +19,7 @@ export default function Card() {
 
 	const [data, setData] = useState([]);
 
-	//update
+	
 
 	const weatherData = async () => {
 		try {
