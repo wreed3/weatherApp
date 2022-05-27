@@ -9,10 +9,7 @@ function App() {
       </div>
       <div className='body-container'>
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      
 
       </div>
 

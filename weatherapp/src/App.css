@@ -8,8 +8,10 @@ body {
 }
 
 .body-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: [c1]auto [c2]auto [c3]auto [c4]auto [c5]auto [c6]auto; 
+/* grid-auto-flow:repeat(6, 250px); */
+  
   justify-content: space-around;
 
 }
