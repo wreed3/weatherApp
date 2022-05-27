@@ -8,8 +8,9 @@ body {
 }
 
 .body-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: [col1] auto [col2] auto  [col3] auto  [col4] auto [col5] auto [col6] auto;
+  grid-auto-flow: row;
   justify-content: space-around;
 
 }
@@ -21,6 +22,7 @@ body {
   align-content: center ;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 2rem;
+  grid-gap: 5rem 3rem;
 }
 
 .title {
@@ -30,14 +32,13 @@ body {
 
 
 .card-container {
+  display: grid;
   margin-top: 3rem;
-  justify-items: space-around;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
   height: 20rem;
   width: 8rem;
   border-style: solid;
+ 
 
 }
 
