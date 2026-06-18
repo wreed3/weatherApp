@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .weather-container
+    h1.weather-title Weather Forecast
+    
+    .search-container
+      input#cityInput.city-input(type='text', placeholder='Enter city name...', value='San Francisco')
+      button#searchBtn.search-btn Search
+      select#unitsSelect.units-select
+        option(value='imperial', selected) °F
+        option(value='metric') °C
+    
+    #errorMessage.error-message(style='display: none;')
+    
+    .current-weather#currentWeather(style='display: none;')
+      h2 Current Weather
+      .current-weather-content
+        .current-temp
+          span#currentTemp.temp-large --
+          span.temp-unit °F
+        .current-details
+          h3#currentCity City Name
+          p#currentDescription --
+          .weather-stats
+            .stat
+              span.stat-label Feels Like:
+              span#feelsLike --°
+            .stat
+              span.stat-label Humidity:
+              span#humidity --%
+            .stat
+              span.stat-label Wind:
+              span#windSpeed -- mph
+    
+    .forecast-container#forecastContainer
+      h2 5-Day Forecast
+      .forecast-grid#forecastGrid
+        .loading Loading forecast...
