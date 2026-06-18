@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+  .radar-section
+    h2 Weather Radar
+    .radar-container
+      #radar-map
+      .radar-controls
+        button#radar-play-btn ▶ Play
+        button#radar-refresh-btn ↻ Refresh
+      .radar-timestamp
+        span#radar-timestamp Loading...
+      .radar-error#radar-error
