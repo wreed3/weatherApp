@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  .radar-page
+    .radar-header
+      h1 Doppler Radar
+      .location-search
+        input#location-input(type='text', placeholder='Search location...')
+        button#search-btn
+          span 🔍
+        button#locate-btn(title='Use my location')
+          span 📍
+    
+    #map-container
+      .loading-overlay
+        .spinner
+        p Loading radar data...
+    
+    .radar-controls
+      .playback-controls
+        button#play-btn.control-btn(title='Play')
+          span ▶
+        button#pause-btn.control-btn(title='Pause', style='display:none')
+          span ⏸
+        button#prev-btn.control-btn(title='Previous frame')
+          span ⏮
+        button#next-btn.control-btn(title='Next frame')
+          span ⏭
+        select#speed-select.speed-control
+          option(value='500') 0.5x
+          option(value='1000', selected) 1x
+          option(value='750') 1.5x
+          option(value='500') 2x
+      
+      .timeline-container
+        input#timeline(type='range', min='0', max='100', value='0')
+        .timeline-info
+          span#current-time --:--
+          span#frame-count 0 / 0
+      
+      .radar-legend
+        h3 Precipitation Intensity
+        .legend-items
+          .legend-item
+            .legend-color(style='background: #00ff00')
+            span Light
+          .legend-item
+            .legend-color(style='background: #ffff00')
+            span Moderate
+          .legend-item
+            .legend-color(style='background: #ff9900')
+            span Heavy
+          .legend-item
+            .legend-color(style='background: #ff0000')
+            span Very Heavy
+          .legend-item
+            .legend-color(style='background: #ff00ff')
+            span Extreme
+      
+      .data-attribution
+        p Radar data provided by 
+          a(href='https://www.rainviewer.com/', target='_blank') RainViewer
+        p Map data © 
+          a(href='https://www.openstreetmap.org/', target='_blank') OpenStreetMap
+          |  contributors
+
+  script(src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+  script(src='/javascripts/radar.js')

@@ -2,6 +2,20 @@ doctype html
 html
   head
     title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/radar.css')
   body
-    block content
+    nav.main-nav
+      .nav-container
+        a.nav-brand(href='/') Weather App
+        ul.nav-links
+          li
+            a(href='/') Home
+          li
+            a(href='/radar') Radar
+    
+    main.main-content
+      block content

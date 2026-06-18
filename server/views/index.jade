@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .home-page
+    h1 Welcome to Weather App
+    p Check current weather conditions and view the doppler radar
+    
+    .feature-cards
+      .card
+        h2 Current Weather
+        p Get real-time weather information for your location
+        a.btn(href='#') Check Weather
+      
+      .card
+        h2 Doppler Radar
+        p View animated precipitation radar for your area
+        a.btn(href='/radar') View Radar
