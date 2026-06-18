@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  .radar-page
+    .radar-header
+      h1 Doppler Radar
+      .location-search
+        input#location-input(type='text', placeholder='Search location...')
+        button#search-btn
+          span 🔍
+        button#locate-btn(title='Use my location')
+          span 📍
+    
+    #map-container
+    
+    .radar-controls
+      .playback-controls
+        button#play-btn.control-btn(title='Play')
+          span ▶
+        button#pause-btn.control-btn(title='Pause', disabled)
+          span ⏸
+        button#prev-btn.control-btn(title='Previous frame')
+          span ⏮
+        button#next-btn.control-btn(title='Next frame')
+          span ⏭
+        .speed-control
+          label Speed:
+          select#speed-select
+            option(value='500') 0.5x
+            option(value='1000', selected) 1x
+            option(value='750') 1.5x
+            option(value='500') 2x
+      
+      .timeline-container
+        input#timeline(type='range', min='0', max='0', value='0', step='1')
+        .timeline-info
+          span#current-time Loading...
+          span#frame-count
+      
+      .radar-legend
+        h3 Precipitation Intensity
+        .legend-items
+          .legend-item
+            .legend-color(style='background: rgba(0, 0, 0, 0)')
+            span None
+          .legend-item
+            .legend-color(style='background: rgba(135, 206, 250, 0.7)')
+            span Light
+          .legend-item
+            .legend-color(style='background: rgba(30, 144, 255, 0.7)')
+            span Moderate
+          .legend-item
+            .legend-color(style='background: rgba(255, 215, 0, 0.7)')
+            span Heavy
+          .legend-item
+            .legend-color(style='background: rgba(255, 140, 0, 0.7)')
+            span Very Heavy
+          .legend-item
+            .legend-color(style='background: rgba(255, 0, 0, 0.7)')
+            span Extreme
+    
+    .loading-overlay#loading
+      .spinner
+      p Loading radar data...
+    
+    .error-message#error(style='display: none;')
+      p
+        span ⚠️
+        span#error-text
+
+  script(src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+  script(src='/javascripts/radar.js')
