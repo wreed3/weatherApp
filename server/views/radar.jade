@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
+  link(rel='stylesheet', href='/stylesheets/radar.css')
+  
+  .radar-container
+    #radar-map
+    
+    .radar-controls
+      .control-panel
+        .control-group
+          h3 Radar Controls
+          
+          .control-item
+            label
+              input#play-pause(type='checkbox', checked)
+              span  Play Animation
+          
+          .control-item
+            label Opacity
+            input#opacity-slider(type='range', min='0', max='100', value='60')
+            span#opacity-value  60%
+          
+          .control-item
+            label Animation Speed
+            input#speed-slider(type='range', min='200', max='2000', value='500', step='100')
+            span#speed-value  500ms
+          
+          .control-item
+            button#locate-btn.btn-locate Locate Me
+        
+        .control-group
+          h3 Radar Legend
+          .legend
+            each color in config.colors
+              if color.value > 0
+                .legend-item
+                  .legend-color(style=`background-color: ${color.color}`)
+                  .legend-label= color.label
+        
+        .control-group
+          .timestamp
+            span Last updated: 
+            span#radar-timestamp Loading...
+
+  script(src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+  script(src='/javascripts/radar-map.js')
