@@ -2,6 +2,23 @@ doctype html
 html
   head
     title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    block styles
   body
-    block content
+    nav.navbar
+      .nav-container
+        a.nav-brand(href='/') Weather App
+        .nav-links
+          a(href='/') Home
+          a(href='/radar') Radar
+    
+    main.main-content
+      block content
+    
+    footer.footer
+      .footer-content
+        p © 2024 Weather App
+    
+    block scripts
