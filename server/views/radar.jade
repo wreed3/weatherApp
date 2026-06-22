@@ -1,0 +1,98 @@
+extends layout
+
+block styles
+  link(rel='stylesheet', href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css')
+  link(rel='stylesheet', href='/stylesheets/radar.css')
+
+block content
+  #radar-container
+    #map-container
+      #radar-map
+      
+      #loading-overlay
+        .loading-spinner
+        p Loading radar data...
+      
+      #error-overlay.hidden
+        .error-content
+          h3 Error Loading Radar
+          p#error-message
+          button#retry-btn.btn Retry
+      
+      .map-controls
+        #location-search-container
+          input#location-search(type='text', placeholder='Search location...')
+          button#current-location-btn.btn.icon-btn(title='Use current location')
+            span 📍
+        
+        #weather-panel.hidden
+          .weather-header
+            h3#weather-location Loading...
+            button#close-weather.close-btn ×
+          .weather-content
+            .weather-main
+              .weather-temp
+                span#weather-temperature --
+                span.unit °F
+              p#weather-description --
+            .weather-details
+              .weather-detail
+                span.label Feels Like
+                span#weather-feels-like --°F
+              .weather-detail
+                span.label Humidity
+                span#weather-humidity --%
+              .weather-detail
+                span.label Wind
+                span#weather-wind -- mph
+              .weather-detail
+                span.label Pressure
+                span#weather-pressure -- mb
+    
+    #radar-controls
+      .timeline-container
+        #timeline-slider
+        .timeline-labels
+          span#timeline-start
+          span#timeline-end
+      
+      .playback-controls
+        button#prev-frame.btn.icon-btn(title='Previous frame') ◀
+        button#play-pause.btn.primary-btn Play
+        button#next-frame.btn.icon-btn(title='Next frame') ▶
+        
+        .speed-controls
+          label Speed:
+          select#speed-select
+            option(value='0.5') 0.5x
+            option(value='1', selected) 1x
+            option(value='2') 2x
+        
+        .opacity-controls
+          label Opacity:
+          input#opacity-slider(type='range', min='0', max='100', value='70')
+        
+        label.loop-control
+          input#loop-toggle(type='checkbox', checked)
+          span Loop
+
+block scripts
+  script(src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js')
+  script(src='/javascripts/utils/helpers.js')
+  script(src='/javascripts/services/location-service.js')
+  script(src='/javascripts/map/map-manager.js')
+  script(src='/javascripts/map/radar-layer.js')
+  script(src='/javascripts/animation/radar-animator.js')
+  script(src='/javascripts/components/timeline.js')
+  script(src='/javascripts/components/playback-controls.js')
+  script(src='/javascripts/components/weather-panel.js')
+  script(src='/javascripts/components/location-search.js')
+  script(src='/javascripts/radar-app.js')
+  script.
+    // Initialize the radar application
+    const radarApp = new RadarApp({
+      defaultLat: #{defaultLat},
+      defaultLon: #{defaultLon},
+      defaultZoom: #{defaultZoom}
+    });
+    radarApp.init();
