@@ -1,23 +1,7 @@
 extends layout
 
 block content
-  .container
-    .hero
-      h1 Weather Application
-      p Real-time weather radar and forecasts
-      
-    .features
-      .feature-card
-        h2 Weather Radar
-        p View animated weather radar with playback controls
-        a.btn(href='/radar') View Radar
-      
-      .feature-card
-        h2 Current Conditions
-        p Get current weather for any location
-        a.btn(href='/radar') Get Started
-      
-      .feature-card
-        h2 Location Search
-        p Search for weather by city or coordinates
-        a.btn(href='/radar') Search Now
+  h1= title
+  p= message
+  p
+    a(href='/weather') Check Weather

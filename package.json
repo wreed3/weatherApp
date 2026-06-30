@@ -1,0 +1,16 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather application",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "cd server && node ./bin/www",
+    "dev": "cd server && node ./bin/www"
+  },
+  "keywords": ["weather", "express"],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}
