@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  .weather-info
+    h2= city
+    p.temperature= temperature
+    p.condition= condition
+  p
+    a(href='/') Back to Home
